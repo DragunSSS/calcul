@@ -1,0 +1,282 @@
+#include "string"
+#include <iostream>
+using namespace std;
+int i,j,n,u,g,pos,pos1,zap,pos2;
+int b,d,c;
+string  s,s1;
+
+void ymn()
+{
+	g = 1;
+	b = 0;
+	d = 0;
+	
+	pos = s.find("*");	
+	
+	for (i = (pos+1); i <= s.length(); i++) {
+		if (((s[i]) >= '0')&&((s[i])<='9')){
+			pos1 = i; 			
+			}else{
+			break;
+		}
+	}
+	u = (pos1 - pos-1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = (pos + 1); i <= pos1; i++) {
+		b = (b + ((s[i] & 0x0F)*g));
+		g = (g / 10);
+		
+	}
+	/*{if (s[(pos1 + 1)] == ',') {
+
+		for (i = (pos1 + 2); i <= s.length(); i++) {
+			if (((s[i]) >= '0') && ((s[i]) <= '9')) {
+				pos2 = i;
+			}
+			else {
+				break;
+			}
+		}
+
+		g = 1;
+		
+		for (i = (pos1 + 2); i <= pos2; i++) {
+			g = (g*(1/10));
+			b = (b + ((s[i] & 0x0F) / 10 ));
+
+			cout << s[i] << endl;
+		}	
+	}*/
+	g = 1;
+	
+	for (i = (pos - 1); i > 0; i--) {
+		if ((((s[i]) >= '0') && ((s[i]) <= '9'))){
+			pos2 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos - pos2-1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = pos2; i <= pos; i++) {
+		d = (d + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+	}
+	
+	c = b * d;
+	
+	s.erase(pos2, pos1);
+	
+	
+	s.insert(pos2, to_string(c));
+	
+	cout << s << endl;
+}
+void del()
+{
+	g = 1;
+	b = 0;
+	d = 0;
+	
+	pos = s.find("/");
+
+	for (i = (pos + 1); i <= s.length(); i++) {
+		if (((s[i]) >= '0') && ((s[i]) <= '9')) {
+			pos1 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos1 - pos - 1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = (pos + 1); i <= pos1; i++) {
+		b = (b + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+
+	}
+	g = 1;
+	
+	for (i = (pos - 1); i > 0; i--) {
+		if ((((s[i]) >= '0') && ((s[i]) <= '9'))) {
+			pos2 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos - pos2 - 1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = pos2; i <= pos; i++) {
+		d = (d + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+	}
+	if (b != 0) {
+		c = (d / b);
+	}
+	else {
+		cout<<"delenie na 0"<<endl;
+	}
+	
+	s.erase(pos2, pos1);
+
+
+	s.insert(pos2, to_string(c));
+
+	cout << s << endl;
+}
+
+void lus()
+{
+	g = 1;
+	b = 0;
+	d = 0;
+
+	pos = s.find("+");
+
+	for (i = (pos + 1); i <= s.length(); i++) {
+		if (((s[i]) >= '0') && ((s[i]) <= '9')) {
+			pos1 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos1 - pos - 1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = (pos + 1); i <= pos1; i++) {
+		b = (b + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+
+	}
+	g = 1;
+
+	for (i = (pos - 1); i > 0; i--) {
+		if ((((s[i]) >= '0') && ((s[i]) <= '9'))) {
+			pos2 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos - pos2 - 1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = pos2; i <= pos; i++) {
+		d = (d + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+	}
+	 
+		c = (d + b);
+	
+
+	s.erase(pos2, pos1);
+
+
+	s.insert(pos2, to_string(c));
+
+	cout << s << endl;
+}
+void inus()
+{
+	g = 1;
+	b = 0;
+	d = 0;
+
+	pos = s.find("-");
+
+	for (i = (pos + 1); i <= s.length(); i++) {
+		if (((s[i]) >= '0') && ((s[i]) <= '9')) {
+			pos1 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos1 - pos - 1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = (pos + 1); i <= pos1; i++) {
+		b = (b + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+
+	}
+	g = 1;
+
+	for (i = (pos - 1); i > 0; i--) {
+		if ((((s[i]) >= '0') && ((s[i]) <= '9'))) {
+			pos2 = i;
+		}
+		else {
+			break;
+		}
+	}
+	u = (pos - pos2 - 1);
+	for (i = 0; i < u; i++) {
+		g = g * 10;
+	}
+	for (i = pos2; i <= pos; i++) {
+		d = (d + ((s[i] & 0x0F) * g));
+		g = (g / 10);
+	}
+
+	c = (d - b);
+
+
+	s.erase(pos2, pos1);
+
+
+	s.insert(pos2, to_string(c));
+
+	cout << s << endl;
+}
+int main()
+{
+	n = 0;
+	cin >> s;
+	s = (" " + s+ " ");
+	for (j = 0; j <= s.length(); j++) {
+		if ((s[j] == '/') || (s[j] == '*')) {
+			if ((s[j] == '*')) {
+				ymn();
+			}
+			if ((s[j] == '/')) {
+				del();
+			}
+			j = 0;
+		}
+	}
+	for (n = 0; n <= s.length(); n++) {
+		if ((s[n] == '+') || (s[n] == '-')) {
+			if ((s[n] == '+')) {
+				lus();
+			}
+			if ((s[n] == '-')) {
+				inus();
+			}
+			n = 0;
+		}
+	}
+	for (i = 0; i <= s.length(); i++) {
+		if (!(((s[i]) >= '0') && ((s[i]) <= '9'))) {
+			s.erase(i, (i + 1));
+		}
+	}
+	cout << "OTBET:" << s << endl;
+	system("pause");
+	return 0;
+}
+
